@@ -16,6 +16,9 @@ SPDX-Copyright: Copyright (c) Capital One Services, LLC
 SPDX-License-Identifier: Apache-2.0
 */
 
+import 'core-js/es/symbol'
+import 'core-js/es/symbol/iterator'
+
 import Pie from './Pie'
 import Tree from './Tree'
 import Radar from './Radar'
@@ -23,9 +26,6 @@ import Bar from './Bar'
 import SmoothLine from './SmoothLine'
 import StockLine from './StockLine'
 import Scatterplot from './Scatterplot.js'
-
-import 'core-js/es6/symbol'
-import 'core-js/fn/symbol/iterator'
 
 export {
   Pie,
