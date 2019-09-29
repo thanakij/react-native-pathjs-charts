@@ -16,9 +16,6 @@ SPDX-Copyright: Copyright (c) Capital One Services, LLC
 SPDX-License-Identifier: Apache-2.0
 */
 
-import 'core-js/es/symbol'
-import 'core-js/es/symbol/iterator'
-
 import Pie from './Pie'
 import Tree from './Tree'
 import Radar from './Radar'
