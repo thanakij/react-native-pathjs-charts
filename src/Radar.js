@@ -99,7 +99,8 @@ export default class RadarChart extends Component
 
     const labels = chart.rings[length - 1].path.points().map(function (p, i) {
       function onLabelPress() {
-        textStyle.onLabelPress(keys[i], keys_value[`${keys[i]}`]);
+        if (!textStyle.onLabelPress) return null
+        textStyle.onLabelPress(keys[i], keys_value[`${keys[i]}`])
       }
 
       return (
