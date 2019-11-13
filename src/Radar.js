@@ -91,7 +91,7 @@ export default class RadarChart extends Component
     const length = chart.rings.length
     const rings = chart.rings.map(function (r, i) {
       if (i !== length - 1 ){
-        return (<Path key={'rings'+i} d={r.path.print()} stroke={colors.stroke} strokeOpacity={colors.strokeOpacity} fill='none' />)
+        return (<Path key={'rings'+i} d={r.path.print()} stroke={colors.stroke} strokeOpacity={i == length - 2 ? 1 : colors.strokeOpacity} fill='none' />)
       }
     })
 
