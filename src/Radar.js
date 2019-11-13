@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import React, {Component} from 'react'
 import {Text as ReactText}  from 'react-native'
-import Svg,{ G, Path, Line, Text} from 'react-native-svg'
+import Svg,{ G, Path, Line, Text, TSpan } from 'react-native-svg'
 import { Options, identity, styleSvg, fontAdapt } from './util'
 const Radar = require('paths-js/radar')
 
@@ -113,7 +113,16 @@ export default class RadarChart extends Component
                       fontStyle={textStyle.fontStyle}
                       fill={textStyle.fill}
                       onPress={onLabelPress}
-                      textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>{keys[i]}
+                      textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
+                    {keys[i].split('\n').map((s, index) =>
+                      {
+                        if (index == 0) {
+                          return <TSpan x={p[0]} y={p[1] < center[1] ? p[1]-15 : p[1]+15}>{s}</TSpan>
+                        } else {
+                          return <TSpan x={p[0]} dy={15}>{s}</TSpan>
+                        }
+                      }
+                    )}
                   </Text>
               </G>
             )
