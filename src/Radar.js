@@ -117,7 +117,7 @@ export default class RadarChart extends Component
                     {keys[i].split('\n').map((s, index) =>
                       {
                         if (index == 0) {
-                          return <TSpan key={index} x={p[0]} y={p[1] < center[1] ? p[1]-15 : p[1]+15}>{s}</TSpan>
+                          return <TSpan key={index} x={p[0]} y={p[1] < center[1] ? p[1]-10 : p[1]+15}>{s}</TSpan>
                         } else {
                           return <TSpan key={index} x={p[0]} dy={15}>{s}</TSpan>
                         }
