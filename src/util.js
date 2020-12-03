@@ -131,5 +131,6 @@ export class Options {
   get r(){return this.props.r || (this.props.options && this.props.options.r)}
   get R(){return this.props.R || (this.props.options && this.props.options.R)}
   get label(){return this.props.label || (this.props.options && this.props.options.label) || {}}
+  get percent(){return this.props.percent || (this.props.options && this.props.options.percent) || {}}
   get animate() {return this.props.animate || (this.props.options && this.props.options.animate) || {}}
 }

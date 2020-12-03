@@ -54,7 +54,14 @@ export default class RadarChart extends Component
         fontSize: 14,
         bold: true,
         color: '#34495E'
-      }
+      },
+      percent: {
+        fontFamily: 'Arial',
+        fontSize: 14,
+        bold: true,
+        color: '#34495E'
+      },
+      showPercent: false
     }
   }
 
@@ -96,6 +103,8 @@ export default class RadarChart extends Component
     })
 
     const textStyle = fontAdapt(options.label)
+    const percentStyle = fontAdapt(options.percent)
+    const showPercent = this.props.showPercent
 
     const labels = chart.rings[length - 1].path.points().map(function (p, i) {
       function onLabelPress() {
@@ -106,6 +115,18 @@ export default class RadarChart extends Component
       return (
               <G key={'label' + i}>
                   <Line x1={p[0]} y1={p[1]} x2={center[0]} y2={center[1]} stroke={colors.stroke} strokeOpacity={colors.strokeOpacity}/>
+                  {showPercent && p[1] < center[1] && (
+                    <Text
+                        fontFamily={percentStyle.fontFamily}
+                        fontSize={percentStyle.fontSize}
+                        fontWeight={percentStyle.fontWeight}
+                        fontStyle={percentStyle.fontStyle}
+                        fill={percentStyle.fill}
+                        onPress={onLabelPress}
+                        textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
+                      <TSpan x={p[0]} y={p[1]-22}>{Math.round(keys_value[keys[i]])}%</TSpan>
+                    </Text>
+                  )}
                   <Text
                       fontFamily={textStyle.fontFamily}
                       fontSize={textStyle.fontSize}
@@ -124,6 +145,18 @@ export default class RadarChart extends Component
                       }
                     )}
                   </Text>
+                  {showPercent && p[1] >= center[1] && (
+                    <Text
+                        fontFamily={percentStyle.fontFamily}
+                        fontSize={percentStyle.fontSize}
+                        fontWeight={percentStyle.fontWeight}
+                        fontStyle={percentStyle.fontStyle}
+                        fill={percentStyle.fill}
+                        onPress={onLabelPress}
+                        textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
+                      <TSpan x={p[0]} dy={30}>{Math.round(keys_value[keys[i]])}%</TSpan>
+                    </Text>
+                  )}
               </G>
             )
     })
