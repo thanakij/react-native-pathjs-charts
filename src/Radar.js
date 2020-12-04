@@ -61,7 +61,7 @@ export default class RadarChart extends Component
         bold: true,
         color: '#34495E'
       },
-      showPercent: false
+      showPercent: (x, y) => Math.round(percent(x, y)) + '%'
     }
   }
 
@@ -84,6 +84,7 @@ export default class RadarChart extends Component
       r: this.props.options.r || radius,
       data: this.props.data,
       accessor: this.props.accessor || accessKeys(keys),
+      min: this.props.options.min,
       max: this.props.options.max,
       rings: this.props.options.rings
     })
@@ -124,7 +125,7 @@ export default class RadarChart extends Component
                         fill={percentStyle.fill}
                         onPress={onLabelPress}
                         textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
-                      <TSpan x={p[0]} y={p[1]-22}>{Math.round(percent(keys_value[keys[i]], options.max))}%</TSpan>
+                      <TSpan x={p[0]} y={p[1]-22}>{showPercent(keys_value[keys[i]], options.max)}</TSpan>
                     </Text>
                   )}
                   <Text
@@ -154,7 +155,7 @@ export default class RadarChart extends Component
                         fill={percentStyle.fill}
                         onPress={onLabelPress}
                         textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
-                      <TSpan x={p[0]} dy={30}>{Math.round(percent(keys_value[keys[i]], options.max))}%</TSpan>
+                      <TSpan x={p[0]} dy={30}>{showPercent(keys_value[keys[i]], options.max)}</TSpan>
                     </Text>
                   )}
               </G>
