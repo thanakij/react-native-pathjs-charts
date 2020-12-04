@@ -19,7 +19,7 @@ SPDX-License-Identifier: Apache-2.0
 import React, {Component} from 'react'
 import {Text as ReactText}  from 'react-native'
 import Svg,{ G, Path, Line, Text, TSpan } from 'react-native-svg'
-import { Options, identity, styleSvg, fontAdapt } from './util'
+import { Options, percent, identity, styleSvg, fontAdapt } from './util'
 const Radar = require('paths-js/radar')
 
 function accessKeys(keys) {
@@ -124,7 +124,7 @@ export default class RadarChart extends Component
                         fill={percentStyle.fill}
                         onPress={onLabelPress}
                         textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
-                      <TSpan x={p[0]} y={p[1]-22}>{Math.round(keys_value[keys[i]])}%</TSpan>
+                      <TSpan x={p[0]} y={p[1]-22}>{Math.round(percent(keys_value[keys[i]]))}%</TSpan>
                     </Text>
                   )}
                   <Text
@@ -154,7 +154,7 @@ export default class RadarChart extends Component
                         fill={percentStyle.fill}
                         onPress={onLabelPress}
                         textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
-                      <TSpan x={p[0]} dy={30}>{Math.round(keys_value[keys[i]])}%</TSpan>
+                      <TSpan x={p[0]} dy={30}>{Math.round(percent(keys_value[keys[i]]))}%</TSpan>
                     </Text>
                   )}
               </G>
