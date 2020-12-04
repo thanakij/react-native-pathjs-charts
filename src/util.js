@@ -18,7 +18,7 @@ SPDX-License-Identifier: Apache-2.0
 
 import _ from 'lodash'
 
-export const percent = (n) => n*100
+export const percent = (x, y) => (x / y)*100
 export const cyclic = (coll, i) => { return coll[i % coll.length] }
 export const identity = (key) => { return function (x) { return x[key] }}
 export const color = (key) => { return function (x) { return x[key] } }

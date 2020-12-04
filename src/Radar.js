@@ -124,7 +124,7 @@ export default class RadarChart extends Component
                         fill={percentStyle.fill}
                         onPress={onLabelPress}
                         textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
-                      <TSpan x={p[0]} y={p[1]-22}>{Math.round(percent(keys_value[keys[i]]))}%</TSpan>
+                      <TSpan x={p[0]} y={p[1]-22}>{Math.round(percent(keys_value[keys[i]], options.max))}%</TSpan>
                     </Text>
                   )}
                   <Text
@@ -154,7 +154,7 @@ export default class RadarChart extends Component
                         fill={percentStyle.fill}
                         onPress={onLabelPress}
                         textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>
-                      <TSpan x={p[0]} dy={30}>{Math.round(percent(keys_value[keys[i]]))}%</TSpan>
+                      <TSpan x={p[0]} dy={30}>{Math.round(percent(keys_value[keys[i]], options.max))}%</TSpan>
                     </Text>
                   )}
               </G>
